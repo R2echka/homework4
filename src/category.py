@@ -1,10 +1,13 @@
-'''Класс категорий'''
+"""Класс категорий"""
+
+
 class Category:
     category_count = 0
     product_count = 0
-    def __init__(self, name: str, desc: str, list: list):
+
+    def __init__(self, name: str, description: str, products: list):
         self.name = name
-        self.desc = desc
-        self.list = list
+        self.description = description
+        self.products = products
+        self.product_count += len(products)
         Category.category_count += 1
-        self.product_count += len(list)

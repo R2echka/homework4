@@ -1,7 +1,9 @@
-'''Класс продуктов'''
+"""Класс продуктов"""
+
+
 class Product:
-    def __init__(self, name: str, desc: str, price: float, quantity: int):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
-        self.desc = desc
+        self.description = description
         self.price = price
         self.quantity = quantity
