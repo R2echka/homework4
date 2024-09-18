@@ -19,14 +19,10 @@ class Product:
         if price <= 0:
             print('Цена не должна быть нулевая или отрицательная')
         else:
-            self.price = price
+            self.__price = price
 
 
     @classmethod
     def new_product(cls, params: dict):
-        name = params[name]
-        description = params[description]
-        price = params[price]
-        quantity = params[quantity]
-        new_prod = cls(name, description, price, quantity)
+        new_prod = cls(params['name'], params['description'], params['price'], params['quantity'])
         return new_prod

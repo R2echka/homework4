@@ -32,3 +32,18 @@ def test_number_of_categories() -> None:
     assert Category.category_count == 1
     cat2 = Category('something', 'description', [])
     assert Category.category_count == 2
+
+def test_add_product(category: Category) -> None:
+    prod1 = Product('name1', '-', 1600, 1)
+    category.add_product(prod1)
+    assert category.product_count == 2
+
+def test_new_product() -> None:
+    prod2 = Product.new_product({'name': 'name1', 'description': '-', 'price': 43892.39, 'quantity': 432})
+    assert type(prod2) == Product
+
+def test_price_setter(product: Product) -> None:
+    product.price = -1
+    assert product.price == 15.99
+    product.price = 16
+    assert product.price == 16
