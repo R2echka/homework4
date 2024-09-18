@@ -10,7 +10,7 @@ def product() -> Product:
 
 
 @pytest.fixture()
-def category() -> Category:
+def category(product) -> Category:
     return Category("name", "description", [product])
 
 
@@ -24,7 +24,7 @@ def test_product(product: Product) -> None:
 def test_category(category: Category) -> None:
     assert category.name == "name"
     assert category.description == "description"
-    assert category.products == [product]
+    assert category.products == ['name, 15.99 руб. Остаток: 100 шт.']
     assert category.product_count == 1
 
 
