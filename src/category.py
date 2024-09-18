@@ -16,15 +16,16 @@ class Category:
         self.__products = products
         self.product_count += len(products)
         Category.category_count += 1
-    
 
-    def add_product(self, product: Product):
+    def add_product(self, product: Product) -> None:
+        """Добавляет новый объект в список атрибута __products"""
         self.__products.append(product)
         self.product_count += 1
-    
+
     @property
-    def products(self):
+    def products(self) -> list:
+        """Публичная версия атрибута __products, выдающая список строк"""
         product_list = []
         for product in self.__products:
-            product_list.append(f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.')
+            product_list.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
         return product_list
