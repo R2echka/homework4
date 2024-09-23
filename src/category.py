@@ -16,6 +16,10 @@ class Category:
         self.__products = products
         self.product_count += len(products)
         Category.category_count += 1
+    
+
+    def __str__(self):
+        return f'{self.name}, количество продуктов: {self.product_count} шт.'
 
     def add_product(self, product: Product) -> None:
         """Добавляет новый объект в список атрибута __products"""
@@ -27,5 +31,5 @@ class Category:
         """Публичная версия атрибута __products, выдающая список строк"""
         product_list = []
         for product in self.__products:
-            product_list.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+            product_list.append(str(product))
         return product_list
