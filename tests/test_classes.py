@@ -53,8 +53,9 @@ def test_price_setter(product: Product) -> None:
 
 
 def test_str(product: Product, category: Category) -> None:
-    assert str(product) == 'name, 15.99 руб. Остаток: 100 шт.'
-    assert str(category) == 'name, количество продуктов: 1 шт.'
+    assert str(product) == "name, 15.99 руб. Остаток: 100 шт."
+    assert str(category) == "name, количество продуктов: 1 шт."
+
 
 def test_product_add(product: Product) -> None:
     prod2 = Product.new_product({"name": "name1", "description": "-", "price": 150, "quantity": 2})
