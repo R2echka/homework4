@@ -22,8 +22,9 @@ class Category:
 
     def add_product(self, product: Product) -> None:
         """Добавляет новый объект в список атрибута __products"""
-        self.__products.append(product)
-        self.product_count += 1
+        if issubclass(type(product), Product) or isinstance(product, Product):
+            self.__products.append(product)
+            self.product_count += 1
 
     @property
     def products(self) -> list:
