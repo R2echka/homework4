@@ -1,12 +1,22 @@
 import pytest
 
 from src.category import Category
-from src.product import Product
+from src.product import LawnGrass, Product, Smartphone
 
 
 @pytest.fixture()
 def product() -> Product:
     return Product("name", "description", 15.99, 100)
+
+
+@pytest.fixture()
+def smartphone() -> Smartphone:
+    return Smartphone("name", "description", 51799, 6, 99.2, "model", 32, "color")
+
+
+@pytest.fixture()
+def lawngrass() -> LawnGrass:
+    return LawnGrass("name", "description", 1730, 158, "country", "period", "color")
 
 
 @pytest.fixture()
@@ -19,6 +29,27 @@ def test_product(product: Product) -> None:
     assert product.description == "description"
     assert product.price == 15.99
     assert product.quantity == 100
+
+
+def test_smartphone(smartphone: Smartphone) -> None:
+    assert smartphone.name == "name"
+    assert smartphone.description == "description"
+    assert smartphone.price == 51799
+    assert smartphone.quantity == 6
+    assert smartphone.efficiency == 99.2
+    assert smartphone.model == "model"
+    assert smartphone.memory == 32
+    assert smartphone.color == "color"
+
+
+def test_lawngrass(lawngrass: LawnGrass) -> None:
+    assert lawngrass.name == "name"
+    assert lawngrass.description == "description"
+    assert lawngrass.price == 1730
+    assert lawngrass.quantity == 158
+    assert lawngrass.country == "country"
+    assert lawngrass.germination_period == "period"
+    assert lawngrass.color == "color"
 
 
 def test_category(category: Category) -> None:
@@ -37,6 +68,8 @@ def test_number_of_categories() -> None:
 def test_add_product(category: Category) -> None:
     prod1 = Product("name1", "-", 1600, 1)
     category.add_product(prod1)
+    assert category.product_count == 2
+    category.add_product("something")
     assert category.product_count == 2
 
 
@@ -57,6 +90,8 @@ def test_str(product: Product, category: Category) -> None:
     assert str(category) == "name, количество продуктов: 1 шт."
 
 
-def test_product_add(product: Product) -> None:
+def test_product_add(product: Product, smartphone: Smartphone, lawngrass: LawnGrass) -> None:
     prod2 = Product.new_product({"name": "name1", "description": "-", "price": 150, "quantity": 2})
     assert product + prod2 == 1899
+    with pytest.raises(TypeError):
+        smartphone + lawngrass
