@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import LawnGrass, Product, Smartphone
+from src.product import BaseProduct, LawnGrass, Product, Smartphone
 
 
 @pytest.fixture()
@@ -95,3 +95,8 @@ def test_product_add(product: Product, smartphone: Smartphone, lawngrass: LawnGr
     assert product + prod2 == 1899
     with pytest.raises(TypeError):
         smartphone + lawngrass
+
+
+def test_abstract_class() -> None:
+    with pytest.raises(TypeError):
+        prod = BaseProduct()
