@@ -4,7 +4,9 @@
 
 ## Классы
 Код находится в файлах [`product.py`](src/product.py) и [`category.py`](src/category.py)
-+ `Product` - Продукты
-    + `Smartphone` - Смартфоны
-    + `LawnGrass` - Трава газонная
++ `MixinLog` - Миксин для вывода информации о новом объекте в консоль
++ `BaseProduct` - Абстрактный класс для продуктов
+    + `Product` - Продукты
+        + `Smartphone` - Смартфоны
+        + `LawnGrass` - Трава газонная
 + `Category` - Категории
