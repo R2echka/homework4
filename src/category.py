@@ -33,3 +33,12 @@ class Category:
         for product in self.__products:
             product_list.append(str(product))
         return product_list
+
+    def avg_price(self):
+        summ = 0
+        for product in self.__products:
+            summ += product.price
+        try:
+            return summ / len(self.__products)
+        except ZeroDivisionError:
+            return 0
