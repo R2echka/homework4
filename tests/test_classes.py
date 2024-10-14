@@ -100,3 +100,17 @@ def test_product_add(product: Product, smartphone: Smartphone, lawngrass: LawnGr
 def test_abstract_class() -> None:
     with pytest.raises(TypeError):
         prod = BaseProduct()
+
+
+def test_zero_quantity() -> None:
+    with pytest.raises(ValueError):
+        Product("name", "desc", 1234, 0)
+
+
+def test_avg_price(category: Category) -> None:
+    assert category.avg_price() == 15.99
+
+
+def test_empty_category() -> None:
+    cat2 = Category("category", "description", [])
+    assert cat2.avg_price() == 0
